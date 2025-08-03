@@ -7,5 +7,6 @@ public interface ApplicationRepo {
     ApplicationEntity findById(int id);
     void updateApplication(int id, String newCompany);
     void deleteById(int id);
+    ApplicationEntity findApplicationName(String name);
+    ApplicationEntity findApplicationBySize(String size);
 }
-
