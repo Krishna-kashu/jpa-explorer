@@ -73,4 +73,15 @@ public class ApplicationServiceImpl implements ApplicationService{
     public void removeById(int id) {
         applicationRepo.deleteById(id);
     }
+
+    @Override
+    public ApplicationEntity getApplicationName(String name) {
+        return applicationRepo.findApplicationName(name);
+    }
+
+    @Override
+    public ApplicationEntity getApplicationBySize(String appSize) {
+        return applicationRepo.findApplicationBySize(appSize);
+    }
+
 }
