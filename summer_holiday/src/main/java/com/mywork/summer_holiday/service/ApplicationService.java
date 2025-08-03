@@ -7,4 +7,6 @@ public interface ApplicationService {
     ApplicationEntity getApplicationById(int id);
     void updateCompanyById(int id, String newCompany);
     void removeById(int id);
+    ApplicationEntity getApplicationName(String name);
+    ApplicationEntity getApplicationBySize(String size);
 }
