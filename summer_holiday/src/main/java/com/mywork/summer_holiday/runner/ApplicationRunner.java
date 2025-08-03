@@ -9,10 +9,10 @@ import java.time.LocalDate;
 public class ApplicationRunner {
     public static void main(String[] args) {
 
-        ApplicationEntity entity = new ApplicationEntity(null,"Instagram", "24Gb", "Meta", 300000, 4.3f, LocalDate.of(2007, 3, 25));
+        ApplicationEntity entity = new ApplicationEntity(null,"Facebook", "39Gb", "Meta", 450000, 4.7f, LocalDate.of(2001, 2, 13));
         ApplicationService applicationService = new ApplicationServiceImpl();
 
-        applicationService.validApplication(entity);
+        //applicationService.validApplication(entity);
 
         ApplicationEntity found = applicationService.getApplicationById(1);
         System.out.println("Found: "+ (found !=null ? found.getApplicationName(): "not found"));
@@ -20,5 +20,8 @@ public class ApplicationRunner {
         applicationService.updateCompanyById(1, "Meta platforms");
 
         applicationService.removeById(1);
+
+        applicationService.getApplicationName("Instagram");
+        applicationService.getApplicationBySize("28gb");
     }
 }
