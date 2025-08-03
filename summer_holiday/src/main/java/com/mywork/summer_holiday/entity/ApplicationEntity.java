@@ -1,12 +1,6 @@
 package com.mywork.summer_holiday.entity;
 
-import com.mywork.summer_holiday.repo.ApplicationRepoImpl;
-import com.mywork.summer_holiday.service.ApplicationService;
-import com.mywork.summer_holiday.service.ApplicationServiceImpl;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -15,7 +9,14 @@ import java.time.LocalDate;
 @Setter
 @RequiredArgsConstructor
 @AllArgsConstructor
+@ToString
 @Entity
+@NamedQuery(name = "findApplicationName", query = "select a from ApplicationEntity a where a.applicationName=:name")
+@NamedQuery(name = "findApplicationBySize", query ="select a from ApplicationEntity a where a.applicationSize=:size")
+@NamedQuery(name = "findApplicationByCompany", query = "select a from ApplicationEntity a where a.company=:company")
+@NamedQuery(name = "findApplicationByNoOfUsers", query = "select a from ApplicationEntity a where a.noOfUsers=:users")
+@NamedQuery(name = "findApplicationByRatings", query = "select a from ApplicationEntity a where a.ratings=:ratings")
+
 @Table(name = "application_details")
 public class ApplicationEntity {
     @Id
