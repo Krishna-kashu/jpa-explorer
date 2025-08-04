@@ -2,6 +2,8 @@ package com.mywork.summer_holiday.repo;
 
 import com.mywork.summer_holiday.entity.ApplicationEntity;
 
+import java.util.List;
+
 public interface ApplicationRepo {
     void savedApplication(ApplicationEntity entity);
     ApplicationEntity findById(int id);
@@ -9,4 +11,6 @@ public interface ApplicationRepo {
     void deleteById(int id);
     ApplicationEntity findApplicationName(String name);
     ApplicationEntity findApplicationBySize(String size);
+    List<ApplicationEntity> findAll();
+    List<ApplicationEntity> findApplicationByCompany(String company);
 }
