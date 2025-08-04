@@ -4,9 +4,12 @@ import com.mywork.summer_holiday.entity.ApplicationEntity;
 import com.mywork.summer_holiday.repo.ApplicationRepo;
 import com.mywork.summer_holiday.repo.ApplicationRepoImpl;
 
+import java.util.Collections;
+import java.util.List;
+
 public class ApplicationServiceImpl implements ApplicationService{
 
-    private ApplicationRepo applicationRepo = new ApplicationRepoImpl();
+    private final ApplicationRepo applicationRepo = new ApplicationRepoImpl();
 
     @Override
     public boolean validApplication(ApplicationEntity applicationEntity) {
@@ -84,4 +87,14 @@ public class ApplicationServiceImpl implements ApplicationService{
         return applicationRepo.findApplicationBySize(appSize);
     }
 
+    @Override
+    public List<ApplicationEntity> getAll() {
+        System.out.println("running findAll in serviceImpl");
+        return applicationRepo.findAll();
+    }
+
+    @Override
+    public List<ApplicationEntity> getApplicationByCompany(String company) {
+        return applicationRepo.findApplicationByCompany(company);
+    }
 }
