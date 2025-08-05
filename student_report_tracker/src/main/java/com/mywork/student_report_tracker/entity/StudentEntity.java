@@ -7,7 +7,6 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
@@ -21,7 +20,9 @@ import java.time.LocalDateTime;
 @NamedQueries({
         @NamedQuery(name = "findByStudentName", query = "select s from StudentEntity s where s.studentName =:name"),
         @NamedQuery(name = "findBySubject", query = "select s from StudentEntity s where s.subject =:subject"),
-        @NamedQuery(name = "findAboveMarks", query = "select s from StudentEntity s where s.marks =:minMarks")
+        @NamedQuery(name = "findByGrade", query = "select s from StudentEntity s where s.grade =:grade"),
+        @NamedQuery(name = "findByMarks", query = "select s from StudentEntity s where s.marks =:marks"),
+        @NamedQuery(name = "readAll", query = "select s from StudentEntity s")
 })
 public class StudentEntity {
 

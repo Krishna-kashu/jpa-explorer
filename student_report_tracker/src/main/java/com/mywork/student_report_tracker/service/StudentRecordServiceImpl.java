@@ -44,13 +44,18 @@ public class StudentRecordServiceImpl implements StudentRecordService {
     }
 
     @Override
+    public StudentEntity getByGrade(String grade) {
+        return repo.findByGrade(grade);
+    }
+
+    @Override
     public List<StudentEntity> getBySubject(String subject) {
         return repo.findBySubject(subject);
     }
 
     @Override
-    public List<StudentEntity> getAboveMarks(int minMarks) {
-        return repo.findAboveMarks(minMarks);
+    public List<StudentEntity> getByMarks(int marks) {
+        return repo.findByMarks(marks);
     }
 
     @Override

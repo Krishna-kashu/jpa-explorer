@@ -11,9 +11,11 @@ public interface StudentRecordService {
 
     StudentEntity getByStudentName(String studentName);
 
+    StudentEntity getByGrade(String grade);
+
     List<StudentEntity> getBySubject(String subject);
 
-    List<StudentEntity> getAboveMarks(int minMarks);
+    List<StudentEntity> getByMarks(int marks);
 
     List<StudentEntity> getAll();
 }

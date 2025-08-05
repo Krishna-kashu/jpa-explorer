@@ -14,24 +14,29 @@ public class StudentReportRunner {
         entity.setGrade("O");
         StudentRecordService service = new StudentRecordServiceImpl();
 
-        // Save
-        service.validStudent(entity);
+//        service.validStudent(entity);
+//        System.out.println("\n saved.... validStudent");
 
-        // Find by name
+        System.out.println("\n getByStudentName");
         StudentEntity found = service.getByStudentName("Ananya");
         System.out.println("Found: " + (found != null ? found.getStudentName() : "Not found"));
 
-        // Delete
+        System.out.println("\n get By Grade");
+        StudentEntity entity1 = service.getByGrade("A");
+        System.out.println(entity1);
+
+
+        System.out.println("\n deleteById");
         boolean deleted = service.deleteById(1);
         System.out.println("Deleted: " + deleted);
 
-        // Read all
+        System.out.println("\n getAll");
         service.getAll().forEach(System.out::println);
 
-        // By subject
+        System.out.println("\n getBySubject");
         service.getBySubject("Mathematics").forEach(System.out::println);
 
-        // Above marks
-        service.getAboveMarks(85).forEach(System.out::println);
+        System.out.println("\n find by marks");
+        service.getByMarks(98).forEach(System.out::println);
     }
 }
