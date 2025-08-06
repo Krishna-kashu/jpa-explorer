@@ -23,7 +23,10 @@ import java.time.LocalDate;
         @NamedQuery(name = "findByStartDate", query = "select g from GymMemberEntity g where g.startDate=:startDate"),
         @NamedQuery(name = "updateMemberNameByType", query = "update GymMemberEntity g set g.memberName=:name where g.membershipType=:type and g.id=:id"),
         @NamedQuery(name = "updateTypeByStatus", query = "update GymMemberEntity g set g.membershipType =:type where g.membershipStatus=:status and g.id=:id"),
-        @NamedQuery(name = "updateStatusByName", query = "update GymMemberEntity g set g.membershipStatus =:status where g.memberName=:name and g.id=:id")
+        @NamedQuery(name = "updateStatusByName", query = "update GymMemberEntity g set g.membershipStatus =:status where g.memberName=:name and g.id=:id"),
+        @NamedQuery(name = "findAllStatus", query = "select a.membershipStatus from GymMemberEntity a"),
+        @NamedQuery(name = "findAllNameAndType", query = "select a.memberName, a.membershipType from GymMemberEntity a"),
+        @NamedQuery(name = "findAllStartAndEndDate", query = "select a.startDate, a.endDate from GymMemberEntity a")
 })
 public class GymMemberEntity {
 

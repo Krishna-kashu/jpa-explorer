@@ -25,4 +25,10 @@ public interface GymMemberRepo {
     GymMemberEntity updateTypeByStatus(String membershipType, String membershipStatus, int id);
 
     GymMemberEntity updateStatusByName(String membershipStatus, String memberName, int id);
+
+    List<String> findAllStatus();
+
+    List<Object[]> findAllNameAndType();
+
+    List<Object[]> findAllStartAndEndDate();
 }

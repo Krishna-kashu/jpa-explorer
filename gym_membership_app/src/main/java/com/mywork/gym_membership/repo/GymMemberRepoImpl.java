@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class GymMemberRepoImpl implements GymMemberRepo {
 
@@ -224,5 +225,49 @@ public class GymMemberRepoImpl implements GymMemberRepo {
             if (manager!=null && manager.isOpen()) manager.close();
         }
         return entity;
+    }
+
+    @Override
+    public List<String> findAllStatus() {
+        EntityManager manager = null;
+        List<String> objectList = Collections.emptyList();
+
+        try {
+            objectList = emf.createEntityManager().createNamedQuery("findAllStatus").getResultList();
+        }catch (PersistenceException e){
+            System.out.println("error in findAllStatus : "+e.getMessage());
+        }finally {
+            if(manager!=null) manager.close();
+        }
+        return objectList;
+    }
+
+    @Override
+    public List<Object[]> findAllNameAndType() {
+        EntityManager manager = null;
+        List<Object[]> list = Collections.emptyList();
+
+        try {
+            list = emf.createEntityManager().createNamedQuery("findAllNameAndType").getResultList();
+        }catch (PersistenceException e){
+            System.out.println("error in findAllNameAndType : "+e.getMessage());
+        }finally {
+            if(manager!=null) manager.close();
+        }
+        return list;
+    }
+
+    @Override
+    public List<Object[]> findAllStartAndEndDate() {
+        EntityManager manager = null;
+        List<Object[] > localDates = Collections.emptyList();
+        try {
+            localDates = emf.createEntityManager().createNamedQuery("findAllStartAndEndDate").getResultList();
+        }catch (PersistenceException e){
+            System.out.println("error in findAllStartAndEndDate: "+e.getMessage());
+        }finally {
+            if(manager!=null) manager.close();
+        }
+        return localDates;
     }
 }
