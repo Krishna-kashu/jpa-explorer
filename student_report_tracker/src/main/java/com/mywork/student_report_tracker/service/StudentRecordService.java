@@ -25,4 +25,10 @@ public interface StudentRecordService {
 
     StudentEntity updateNameByGrade(String studentName, String grade, int id);
 
+    List<String> getAllNames();
+
+    List<Object[]> getAllNameAndMarks();
+
+    List<Object[]> getAllNameSubjectGrade();
+
 }
