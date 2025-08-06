@@ -223,4 +223,49 @@ public class StudentRecordRepoImpl implements StudentRecordRepo {
         }
         return entity;
     }
+
+    @Override
+    public List<String> findAllName() {
+        EntityManager entityManager = null;
+        List<String> list = Collections.emptyList();
+
+        try {
+            list =emf.createEntityManager().createNamedQuery("findAllName").getResultList();
+        }catch (PersistenceException e){
+            System.out.println("error in findAllName: "+e.getMessage());
+        }finally {
+            if(entityManager!=null && entityManager.isOpen()) entityManager.close();
+        }
+        return list;
+    }
+
+    @Override
+    public List<Object[]> findAllNameAndMarks() {
+        List<Object[]> list = Collections.emptyList();
+        EntityManager manager = null;
+        try {
+            list = emf.createEntityManager().createNamedQuery("findAllNameAndMarks").getResultList();
+
+        }catch (PersistenceException e){
+            System.out.println("error in findAllNameAndMarks: "+ e.getMessage());
+        }finally {
+            if(manager!=null && manager.isOpen()) manager.isOpen();
+        }
+        return list;
+    }
+
+    @Override
+    public List<Object[]> findAllNameSubjectGrade() {
+        List<Object[]> objectList = Collections.emptyList();
+        EntityManager manager = null;
+        try {
+            objectList = emf.createEntityManager().createNamedQuery("findAllNameSubjectGrade").getResultList();
+
+        }catch (PersistenceException e){
+            System.out.println("error in findAllNameSubjectGrade: "+ e.getMessage());
+        }finally {
+            if(manager!=null && manager.isOpen()) manager.isOpen();
+        }
+        return objectList;
+    }
 }
