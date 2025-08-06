@@ -3,6 +3,8 @@ package com.mywork.food_delivery.service;
 import com.mywork.food_delivery.entity.FoodOrderEntity;
 import com.mywork.food_delivery.repo.FoodOrderRepo;
 import com.mywork.food_delivery.repo.FoodOrderRepoImpl;
+
+import java.util.Collections;
 import java.util.List;
 
 public class FoodOrderServiceImpl implements FoodOrderService {
@@ -69,5 +71,20 @@ public class FoodOrderServiceImpl implements FoodOrderService {
     @Override
     public FoodOrderEntity updateQuantityByFoodItem(int quantity, String foodItem, int id) {
         return repo.updateQuantityByFoodItem(quantity,foodItem,id);
+    }
+
+    @Override
+    public List<String> getAllName() {
+        return repo.findAllName();
+    }
+
+    @Override
+    public List<Object[]> getAllFoodItemAndPrice() {
+        return repo.findAllFoodItemAndPrice();
+    }
+
+    @Override
+    public List<Object[]> getAllFoodItemQuantityAndDeliveryAddress() {
+        return repo.findAllFoodItemQuantityAndDeliveryAddress();
     }
 }

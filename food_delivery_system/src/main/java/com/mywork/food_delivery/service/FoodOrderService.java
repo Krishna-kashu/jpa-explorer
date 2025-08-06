@@ -24,4 +24,10 @@ public interface FoodOrderService {
 
     FoodOrderEntity updateQuantityByFoodItem(int quantity, String foodItem, int id);
 
+    List<String> getAllName();
+
+    List<Object[] > getAllFoodItemAndPrice();
+
+    List<Object[]> getAllFoodItemQuantityAndDeliveryAddress();
+
 }

@@ -44,5 +44,13 @@ public class FoodOrderRunner {
         FoodOrderEntity updateQuantity = service.updateQuantityByFoodItem(5,"Veg Pizza",3);
         System.out.println(updateQuantity);
 
+        System.out.println("AllName : ");
+        service.getAllName().forEach(System.out::println);
+
+        System.out.println("AllFoodItemAndPrice : ");
+        service.getAllFoodItemAndPrice().forEach(l-> System.out.println("Food item: "+l[0]+", Price: "+l[1]));
+
+        System.out.println("AllFoodItemQuantityAndDeliveryAddress : ");
+        service.getAllFoodItemQuantityAndDeliveryAddress().forEach(l-> System.out.println("FoodItem - "+l[0]+", Quantity - "+l[1]+", DeliveryAddress - "+l[2]));
     }
 }
