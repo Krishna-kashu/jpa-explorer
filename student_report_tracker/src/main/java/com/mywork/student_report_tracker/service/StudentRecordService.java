@@ -18,4 +18,11 @@ public interface StudentRecordService {
     List<StudentEntity> getByMarks(int marks);
 
     List<StudentEntity> getAll();
+
+    StudentEntity updateSubjectByName(String subject, String studentName, int id);
+
+    StudentEntity updateMarksBySubject(int marks, String subject, int id);
+
+    StudentEntity updateNameByGrade(String studentName, String grade, int id);
+
 }

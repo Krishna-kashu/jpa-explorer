@@ -18,4 +18,10 @@ public interface StudentRecordRepo {
     List<StudentEntity> findByMarks(int marks);
 
     List<StudentEntity> readAll();
+
+    StudentEntity updateSubjectByName(String subject, String studentName, int id);
+
+    StudentEntity updateMarksBySubject(int marks, String subject, int id);
+
+    StudentEntity updateNameByGrade(String studentName, String grade, int id);
 }

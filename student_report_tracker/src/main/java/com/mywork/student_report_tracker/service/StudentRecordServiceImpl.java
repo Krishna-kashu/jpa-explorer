@@ -62,4 +62,19 @@ public class StudentRecordServiceImpl implements StudentRecordService {
     public List<StudentEntity> getAll() {
         return repo.readAll();
     }
+
+    @Override
+    public StudentEntity updateSubjectByName(String subject, String studentName, int id) {
+        return repo.updateSubjectByName(subject,studentName,id);
+    }
+
+    @Override
+    public StudentEntity updateMarksBySubject(int marks, String subject, int id) {
+        return repo.updateMarksBySubject(marks,subject,id);
+    }
+
+    @Override
+    public StudentEntity updateNameByGrade(String studentName, String grade, int id) {
+        return repo.updateNameByGrade(studentName,grade,id);
+    }
 }

@@ -139,4 +139,88 @@ public class StudentRecordRepoImpl implements StudentRecordRepo {
         }
         return list;
     }
+
+    @Override
+    public StudentEntity updateSubjectByName(String subject, String studentName, int id) {
+        System.out.println("updateSubjectByName in repoImpl");
+
+        EntityManager em = null;
+        EntityTransaction tx = null;
+        StudentEntity entity = null;
+        try{
+            em = emf.createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            int updatedRows = em.createNamedQuery("updateSubjectByName")
+                    .setParameter("id",id)
+                    .setParameter("name",studentName)
+                    .setParameter("sub",subject).executeUpdate();
+            System.out.println("rows affected: "+ updatedRows);
+            tx.commit();
+            entity=em.find(StudentEntity.class, id);
+            return entity;
+        }catch (PersistenceException e){
+            System.out.println(e.getMessage());
+            if (tx != null) tx.rollback();
+        }finally {
+            if (em!=null && em.isOpen()) em.close();
+        }
+        return entity;
+    }
+
+    @Override
+    public StudentEntity updateMarksBySubject(int marks, String subject, int id) {
+        System.out.println("updateMarksBySubject in repoImpl");
+
+        EntityManager entityManager = null;
+        EntityTransaction entityTransaction = null;
+        StudentEntity entity = null;
+        try{
+            entityManager = emf.createEntityManager();
+            entityTransaction = entityManager.getTransaction();
+            entityTransaction.begin();
+            int row = entityManager.createNamedQuery("updateMarksBySubject")
+                    .setParameter("id",id)
+                    .setParameter("marks",marks)
+                    .setParameter("sub",subject).executeUpdate();
+            System.out.println("rows affected: "+ row);
+            entityTransaction.commit();
+            entity= entityManager.find(StudentEntity.class, id);
+            return entity;
+        }catch (PersistenceException e){
+            System.out.println(e.getMessage());
+            if (entityTransaction != null) entityTransaction.rollback();
+        }finally {
+            if (entityManager !=null && entityManager.isOpen()) entityManager.close();
+        }
+        return entity;
+    }
+
+    @Override
+    public StudentEntity updateNameByGrade(String studentName, String grade, int id) {
+        System.out.println("updateNameByGrade in repoImpl");
+
+        EntityManager em = null;
+        EntityTransaction transaction = null;
+        StudentEntity entity = null;
+        try{
+            em = emf.createEntityManager();
+            transaction = em.getTransaction();
+            transaction.begin();
+            int row = em.createNamedQuery("updateNameByGrade")
+                    .setParameter("id",id)
+                    .setParameter("grade",grade)
+                    .setParameter("name",studentName).executeUpdate();
+            System.out.println("rows affected: "+ row);
+            transaction.commit();
+            entity= em.find(StudentEntity.class, id);
+            return entity;
+        }catch (PersistenceException e){
+            System.out.println(e.getMessage());
+            if (transaction != null) transaction.rollback();
+        }finally {
+            if (em !=null && em.isOpen()) em.close();
+        }
+        return entity;
+    }
 }

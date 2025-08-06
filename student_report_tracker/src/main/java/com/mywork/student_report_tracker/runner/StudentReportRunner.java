@@ -14,8 +14,8 @@ public class StudentReportRunner {
         entity.setGrade("O");
         StudentRecordService service = new StudentRecordServiceImpl();
 
-//        service.validStudent(entity);
-//        System.out.println("\n saved.... validStudent");
+        service.validStudent(entity);
+        System.out.println("\n saved.... validStudent");
 
         System.out.println("\n getByStudentName");
         StudentEntity found = service.getByStudentName("Ananya");
@@ -38,5 +38,14 @@ public class StudentReportRunner {
 
         System.out.println("\n find by marks");
         service.getByMarks(98).forEach(System.out::println);
+
+        StudentEntity studentEntity = service.updateMarksBySubject(97,"English",5);
+        System.out.println(studentEntity);
+
+        StudentEntity entity2 = service.updateNameByGrade("Bharat","O",5);
+        System.out.println(entity2);
+
+        StudentEntity entity3 = service.updateSubjectByName("Social Science", "Lasya",4);
+        System.out.println(entity3);
     }
 }

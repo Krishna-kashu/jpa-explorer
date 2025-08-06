@@ -22,7 +22,10 @@ import java.time.LocalDateTime;
         @NamedQuery(name = "findBySubject", query = "select s from StudentEntity s where s.subject =:subject"),
         @NamedQuery(name = "findByGrade", query = "select s from StudentEntity s where s.grade =:grade"),
         @NamedQuery(name = "findByMarks", query = "select s from StudentEntity s where s.marks =:marks"),
-        @NamedQuery(name = "readAll", query = "select s from StudentEntity s")
+        @NamedQuery(name = "readAll", query = "select s from StudentEntity s"),
+        @NamedQuery(name="updateSubjectByName", query = "update StudentEntity s set s.subject=:sub where s.studentName=:name and s.studentId=:id"),
+        @NamedQuery(name="updateMarksBySubject", query = "update StudentEntity s set s.marks=:marks where s.subject=:sub and s.studentId=:id"),
+        @NamedQuery(name="updateNameByGrade", query = "update StudentEntity s set s.studentName=:name where s.grade=:grade and s.studentId=:id")
 })
 public class StudentEntity {
 
