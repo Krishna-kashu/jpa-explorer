@@ -3,6 +3,7 @@ package com.mywork.food_delivery.repo;
 import com.mywork.food_delivery.entity.FoodOrderEntity;
 
 import javax.persistence.*;
+import java.util.Collections;
 import java.util.List;
 
 public class FoodOrderRepoImpl implements FoodOrderRepo {
@@ -208,5 +209,47 @@ public class FoodOrderRepoImpl implements FoodOrderRepo {
             if (entityManager!=null && entityManager.isOpen()) entityManager.close();
         }
         return entity;
+    }
+
+    @Override
+    public List<String> findAllName() {
+        EntityManager manager = null;
+        List<String> list = Collections.emptyList();
+        try {
+            list = emf.createEntityManager().createNamedQuery("findAllName").getResultList();
+        }catch (PersistenceException e){
+            System.out.println("error in findAllName: "+e.getMessage());
+        }finally {
+            if(manager!=null) manager.close();
+        }
+        return list;
+    }
+
+    @Override
+    public List<Object[]> findAllFoodItemAndPrice() {
+        EntityManager manager = null;
+        List<Object[]> list = Collections.emptyList();
+        try {
+            list = emf.createEntityManager().createNamedQuery("findAllFoodItemAndPrice").getResultList();
+        }catch (PersistenceException e){
+            System.out.println("error in findAllFoodItemAndPrice: "+e.getMessage());
+        }finally {
+            if(manager!=null) manager.close();
+        }
+        return list;
+    }
+
+    @Override
+    public List<Object[]> findAllFoodItemQuantityAndDeliveryAddress() {
+        EntityManager manager = null;
+        List<Object[]> itemList = Collections.emptyList();
+        try {
+            itemList = emf.createEntityManager().createNamedQuery("findAllFoodItemQuantityAndDeliveryAddress").getResultList();
+        }catch (PersistenceException e){
+            System.out.println("error in findAllFoodItemQuantityAndDeliveryAddress: "+e.getMessage());
+        }finally {
+            if(manager!=null) manager.close();
+        }
+        return itemList;
     }
 }

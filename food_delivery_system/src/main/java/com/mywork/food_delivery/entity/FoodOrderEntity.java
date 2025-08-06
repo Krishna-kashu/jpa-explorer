@@ -25,7 +25,11 @@ import java.time.LocalDateTime;
         @NamedQuery(name = "findByPriceGreaterThan", query = "select f from FoodOrderEntity f where f.price > :amount"),
         @NamedQuery(name = "UpdateFoodItemByRestaurantName", query = "update FoodOrderEntity f set f.foodItem =:item where f.restaurantName=:name and f.id=:id"),
         @NamedQuery(name = "UpdatePriceByFoodItem", query = "update FoodOrderEntity f set  f.price=:price where f.foodItem=:item and f.id=:id"),
-        @NamedQuery(name = "updateQuantityByFoodItem", query = "update FoodOrderEntity f set f.quantity=:quantity where f.foodItem=:item and f.id=:id")
+        @NamedQuery(name = "updateQuantityByFoodItem", query = "update FoodOrderEntity f set f.quantity=:quantity where f.foodItem=:item and f.id=:id"),
+        @NamedQuery(name = "findAllName", query = "select a.restaurantName from FoodOrderEntity a"),
+        @NamedQuery(name = "findAllFoodItemAndPrice", query = "select a.foodItem, a.price from FoodOrderEntity a"),
+        @NamedQuery(name = "findAllFoodItemQuantityAndDeliveryAddress", query = "select a.restaurantName, a.quantity, a.deliveryAddress from FoodOrderEntity a")
+
 })
 public class FoodOrderEntity {
 

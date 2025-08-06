@@ -3,6 +3,7 @@ package com.mywork.food_delivery.repo;
 import com.mywork.food_delivery.entity.FoodOrderEntity;
 
 import java.util.List;
+import java.util.Objects;
 
 public interface FoodOrderRepo {
     boolean save(FoodOrderEntity entity);
@@ -22,4 +23,10 @@ public interface FoodOrderRepo {
     FoodOrderEntity updatePriceByFoodItem(double price, String item, int id);
 
     FoodOrderEntity updateQuantityByFoodItem(int quantity, String foodItem, int id);
+
+    List<String> findAllName();
+
+    List<Object[] > findAllFoodItemAndPrice();
+
+    List<Object[]> findAllFoodItemQuantityAndDeliveryAddress();
 }
