@@ -17,7 +17,12 @@ import java.time.LocalDate;
 @NamedQuery(name = "findApplicationByRatings", query = "select a from ApplicationEntity a where a.ratings=:ratings")
 @NamedQuery(name = "findAll", query = "select a from ApplicationEntity a")
 @NamedQuery(name = "findByCompany", query = "select a from ApplicationEntity a where a.company=:company")
-
+@NamedQuery(name = "updateNameAndNumberOfUsersByCompanyAndId", query = "update ApplicationEntity a set a.applicationName=:name where a.company=:company")
+@NamedQuery(name = "findAllAppName", query = "select a.applicationName from ApplicationEntity a")
+@NamedQuery(name = "findAllNoOfUsers", query = "select a.noOfUsers from ApplicationEntity a")
+@NamedQuery(name = "findAllRatings", query = "select a.ratings from ApplicationEntity a")
+@NamedQuery(name = "findAllAppSize", query = "select a.applicationSize from ApplicationEntity a")
+@NamedQuery(name = "findAppNameAndRatings", query = "select a.applicationName, a.ratings from ApplicationEntity a")
 
 @Table(name = "application_details")
 public class ApplicationEntity {

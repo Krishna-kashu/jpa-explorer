@@ -13,4 +13,12 @@ public interface ApplicationRepo {
     ApplicationEntity findApplicationBySize(String size);
     List<ApplicationEntity> findAll();
     List<ApplicationEntity> findApplicationByCompany(String company);
+    int updateApplicationNameByCompany(String applicationName, String company);
+    List<String> findAllAppName ();
+    List<Integer> findAllNoOfUsers();
+    List<Float> findAllRatings();
+
+    List<Object> findAllAppSize();
+
+    List<Object[] > findAppNameAndRatings();
 }
