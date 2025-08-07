@@ -4,6 +4,7 @@ import com.mywork.summer_holiday.entity.ApplicationEntity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ApplicationRepoImpl implements ApplicationRepo {
@@ -153,5 +154,110 @@ public class ApplicationRepoImpl implements ApplicationRepo {
             System.out.println("EntityManager closed");
         }
         return list;
+    }
+
+    @Override
+    public int updateApplicationNameByCompany(String applicationName, String company) {
+        EntityManager entityManager = emf.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        int  isUpdated=0;
+        try{
+
+            transaction.begin();
+            isUpdated= entityManager.createNamedQuery("updateNameAndNumberOfUsersByCompanyAndId")
+                    .setParameter("name", applicationName).setParameter("company", company)
+                    .executeUpdate();
+            transaction.commit();
+            System.out.println(isUpdated);
+        }catch (PersistenceException e){
+            if(transaction.isActive()) transaction.rollback();
+            e.printStackTrace();
+        }finally {
+            entityManager.close();
+        }
+        return isUpdated;
+    }
+
+    @Override
+    public List<String> findAllAppName() {
+        EntityManager manager = null;
+        List<String> list = Collections.emptyList();
+
+        try {
+            list = emf.createEntityManager().createNamedQuery("findAllAppName").getResultList();
+
+        }catch (PersistenceException e){
+            System.out.println("error in findAllAppName : "+e.getMessage());
+        }finally {
+            if(manager!=null) manager.close();
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<Integer> findAllNoOfUsers() {
+        EntityManager manager =  emf.createEntityManager();
+        List<Integer> list = Collections.emptyList();
+
+        try {
+            list =manager.createNamedQuery("findAllNoOfUsers").getResultList();
+
+        }catch (PersistenceException e){
+            System.out.println("error in findAllNoOfUsers : "+e.getMessage());
+        }finally {
+            if(manager!=null) manager.close();
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<Float> findAllRatings() {
+        EntityManager manager = null;
+        List<Float> floatList = Collections.emptyList();
+
+        try {
+            floatList = emf.createEntityManager().createNamedQuery("findAllRatings").getResultList();
+
+        }catch (PersistenceException e){
+            System.out.println("error in findAllRatings : "+e.getMessage());
+        }finally {
+            if(manager!=null) manager.close();
+        }
+
+        return floatList;
+    }
+
+    @Override
+    public List<Object> findAllAppSize() {
+        EntityManager manager = null;
+        List<Object> objectList = Collections.emptyList();
+
+        try {
+            objectList = emf.createEntityManager().createNamedQuery("findAllAppSize").getResultList();
+        }catch (PersistenceException e){
+            System.out.println("error in findAllRatings : "+e.getMessage());
+        }finally {
+            if(manager!=null) manager.close();
+        }
+
+        return objectList;
+    }
+
+
+    @Override
+    public List<Object[]> findAppNameAndRatings() {
+        EntityManager manager = null;
+        List<Object[] > list = Collections.emptyList();
+        try {
+            list = emf.createEntityManager().createNamedQuery("findAppNameAndRatings").getResultList();
+        }catch (PersistenceException e){
+            System.out.println("error in findAppNameAndRatings: "+e.getMessage());
+        }finally {
+            if(manager!=null) manager.close();
+        }
+        return list;
+
     }
 }
