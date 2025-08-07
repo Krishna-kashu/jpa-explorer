@@ -11,7 +11,7 @@ public class GymMemberRunner {
 
         GymMemberEntity entity = new GymMemberEntity();
 
-        entity.setMemberName("Shree Shetty");
+        entity.setMemberName("Lokesh Shetty");
         entity.setMembershipType("Premium");
         entity.setMembershipStatus("ACTIVE");
         entity.setStartDate(LocalDate.of(2023, 7, 1));
@@ -21,7 +21,7 @@ public class GymMemberRunner {
 
 //        System.out.println("\n1.Save");
 //        service.validMember(entity);
-
+//
 //        System.out.println("\n2. By name");
 //        GymMemberEntity found = service.getByMemberName("Ravi Kumar");
 //        System.out.println("Found: " + (found != null ? found.getMemberName() : "Not found"));
@@ -43,14 +43,23 @@ public class GymMemberRunner {
 //        service.getByStartDate(LocalDate.of(2024, 4, 1));
 //
 //        System.out.println("\n\n Update operations");
+//
+//        GymMemberEntity entity1 = service.updateMemberNameByType("Deeraj Patel", "Premium",5);
+//        System.out.println(entity1);
+//
+//        GymMemberEntity entity2 = service.updateStatusByName("INACTIVE", "Suresh Yadav",3);
+//        System.out.println(entity2);
+//
+//        GymMemberEntity entity3 = service.updateTypeByStatus("Basic", "ACTIVE",7);
+//        System.out.println(entity3);
 
-        GymMemberEntity entity1 = service.updateMemberNameByType("Deeraj Patel", "Premium",5);
-        System.out.println(entity1);
+        System.out.println("AllStatus: ");
+        service.getAllStatus().forEach(System.out::println);
 
-        GymMemberEntity entity2 = service.updateStatusByName("INACTIVE", "Suresh Yadav",3);
-        System.out.println(entity2);
+        System.out.println("AllNameAndType: ");
+        service.getAllNameAndType().forEach(l-> System.out.println("Name: "+l[0]+", Type: "+l[1]));
 
-        GymMemberEntity entity3 = service.updateTypeByStatus("Basic", "ACTIVE",7);
-        System.out.println(entity3);
+        System.out.println("AllStartAndEndDate: ");
+        service.getAllStartAndEndDate().forEach(l-> System.out.println("Start date: "+l[0]+", End date: "+l[1]));
     }
 }
