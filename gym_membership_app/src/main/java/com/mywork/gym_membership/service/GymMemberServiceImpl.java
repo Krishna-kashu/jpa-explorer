@@ -5,7 +5,9 @@ import com.mywork.gym_membership.repo.GymMemberRepo;
 import com.mywork.gym_membership.repo.GymMemberRepoImpl;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class GymMemberServiceImpl implements GymMemberService {
 
@@ -81,5 +83,20 @@ public class GymMemberServiceImpl implements GymMemberService {
     @Override
     public GymMemberEntity updateStatusByName(String membershipStatus, String memberName, int id) {
         return repo.updateStatusByName(membershipStatus,memberName,id);
+    }
+
+    @Override
+    public List<String> getAllStatus() {
+        return repo.findAllStatus();
+    }
+
+    @Override
+    public List<Object[]> getAllNameAndType() {
+        return repo.findAllNameAndType();
+    }
+
+    @Override
+    public List<Object[]> getAllStartAndEndDate() {
+        return repo.findAllStartAndEndDate();
     }
 }

@@ -25,4 +25,10 @@ public interface GymMemberService {
     GymMemberEntity updateTypeByStatus(String membershipType, String membershipStatus, int id);
 
     GymMemberEntity updateStatusByName(String membershipStatus, String memberName, int id);
+
+    List<String> getAllStatus();
+
+    List<Object[]> getAllNameAndType();
+
+    List<Object[]> getAllStartAndEndDate();
 }
