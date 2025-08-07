@@ -49,4 +49,3 @@ public class ApplicationEntity {
     @Column(name = "launch_date")
     private LocalDate launchDate;
 }
-
