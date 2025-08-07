@@ -13,4 +13,12 @@ public interface ApplicationService {
     ApplicationEntity getApplicationBySize(String size);
     List<ApplicationEntity> getAll();
     List<ApplicationEntity> getApplicationByCompany(String company);
+    int updateApplicationNameByCompany(String applicationName, String company);
+    List<String> getAllAppName();
+    List<Integer> getAllNoOfUsers();
+    List<Float> getAllRatings();
+
+    List<Object> getAllAppSize();
+    List<Object[]> getAppNameAndRatings();
+
 }

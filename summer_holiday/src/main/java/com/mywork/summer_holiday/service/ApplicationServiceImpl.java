@@ -97,4 +97,34 @@ public class ApplicationServiceImpl implements ApplicationService{
     public List<ApplicationEntity> getApplicationByCompany(String company) {
         return applicationRepo.findApplicationByCompany(company);
     }
+
+    @Override
+    public int updateApplicationNameByCompany(String applicationName, String company) {
+       return applicationRepo.updateApplicationNameByCompany(applicationName,company);
+    }
+
+    @Override
+    public List<String> getAllAppName() {
+        return applicationRepo.findAllAppName();
+    }
+
+    @Override
+    public List<Integer> getAllNoOfUsers() {
+        return applicationRepo.findAllNoOfUsers();
+    }
+
+    @Override
+    public List<Float> getAllRatings() {
+        return applicationRepo.findAllRatings();
+    }
+
+    @Override
+    public List<Object> getAllAppSize() {
+        return applicationRepo.findAllAppSize();
+    }
+
+    @Override
+    public List<Object[]> getAppNameAndRatings() {
+        return applicationRepo.findAppNameAndRatings();
+    }
 }
