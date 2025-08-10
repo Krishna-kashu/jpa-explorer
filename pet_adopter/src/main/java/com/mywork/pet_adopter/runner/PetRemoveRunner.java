@@ -3,7 +3,7 @@ package com.mywork.pet_adopter.runner;
 import com.mywork.pet_adopter.entity.PetEntity;
 import javax.persistence.*;
 
-public class PetUpdateRunner {
+public class PetRemoveRunner {
     public static void main(String[] args) {
 
         EntityManagerFactory emf = null;
@@ -17,19 +17,16 @@ public class PetUpdateRunner {
 
             et.begin();
 
-            PetEntity pet = em.find(PetEntity.class, 1);// Finding pet by ID
+            PetEntity pet = em.find(PetEntity.class, 1);
 
             if (pet != null) {
-                System.out.println("Before Update" + pet.getPetName());
+                System.out.println("Deleting pet: " + pet.getPetName());
 
-                // Updating
-                pet.setPetName("Chintu");
-                pet.setAge(4);
+                em.remove(pet);
 
                 et.commit();
 
-                System.out.println("after "+pet.getPetName());
-                System.out.println("Pet updated successfully!");
+                System.out.println("Pet deleted successfully!");
             } else {
                 System.out.println("Pet not found!");
                 et.rollback();
